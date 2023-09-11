@@ -6,7 +6,7 @@
 ## sdtc:valueSet and sdtc:valueSetVersion attributes in to a new XML document. Then the results of the transformed 
 ## document are written to a csv file. The hope is that this will allow users to quickly determine what triggered 
 ## the eCR at the sender, the version of the trigger codes used and the sender's name. The code will also pull information 
-## from RR (via XSL transformation) that was sent along with the eCR and write this data to the same csv.
+## from the RR (via XSL transformation) that was sent along with the eCR and write this data to the same csv.
 ## Users should update their state code in the RR XSLT file, so they only get the conditions that were found reportable to 
 ## their state. 
 ############################################
@@ -99,6 +99,7 @@ $custobject = [PSCustomObject]@{
     ReportID = $ECRxml.rootroot.DocInfo.ReportID.value
     ReportDate = $ECRxml.rootroot.DocInfo.ReportDate.value
     ReportDate2 = $ECRxml.rootroot.DocInfo.ReportDate2
+    Doc_Version = $ECRxml.rootroot.DocInfo.Doc_Version
     ProviderName = $ECRxml.rootroot.DocInfo.ProviderOrgName.value
     CustodianOrgName = $ECRxml.rootroot.DocInfo.CustodianOrgName.value
 

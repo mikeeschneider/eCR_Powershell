@@ -14,6 +14,14 @@
 				<xsl:text>/</xsl:text>
 				<xsl:value-of select="substring(/cda:ClinicalDocument/cda:effectiveTime/@value,0,5)"/>
 			</ReportDate2>
+			<Doc_Version>
+				<xsl:if test="/cda:ClinicalDocument/cda:templateId[@root = '2.16.840.1.113883.10.20.15.2'][@extension = '2016-12-01']">
+					<xsl:text>v1.1</xsl:text>
+				</xsl:if>
+				<xsl:if test="/cda:ClinicalDocument/cda:templateId[@root = '2.16.840.1.113883.10.20.15.2'][@extension = '2022-05-01']">
+					<xsl:text>v3.1</xsl:text>		
+				</xsl:if>
+			</Doc_Version>
 			<ProviderOrgName value="{/cda:ClinicalDocument/cda:recordTarget/cda:patientRole/cda:providerOrganization/cda:name}"/>
 			<CustodianOrgName value="{/cda:ClinicalDocument/cda:custodian/cda:assignedCustodian/cda:representedCustodianOrganization/cda:name}"/>
 		</DocInfo>
